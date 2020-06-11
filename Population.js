@@ -50,14 +50,14 @@ class Population {
     //println(bestCarNo);
   }
 
-  saveGen(limit) {
-    for (var i = 0; i < limit; i++) {
-      saveTable(
-        cars[i].brain.NetToTable(),
-        'data/gen' + gen + '-fit' + bestFitness + '/car-' + i + '.csv'
-      )
-    }
-  }
+  // saveGen(limit) {
+  //   for (var i = 0; i < limit; i++) {
+  //     saveTable(
+  //       cars[i].brain.NetToTable(),
+  //       'data/gen' + gen + '-fit' + bestFitness + '/car-' + i + '.csv'
+  //     )
+  //   }
+  // }
 
   done() {
     // returns true if all players are dead

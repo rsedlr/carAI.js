@@ -17,6 +17,7 @@ class HUD {
     prevTime = Math.round(prevTime / 1000)
     bestTime = Math.round(bestTime / 1000)
     fill(0)
+    strokeWeight(0)
     textSize(32)
     text(
       'Time: ' + str(Math.round(((millis() - time) / 1000) * 100) / 100),

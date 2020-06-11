@@ -1,8 +1,13 @@
+// TODO: save best time in cookie
+//       when paused, car time should increase
+
 var heldKeys = [false, false, false, false] // up, down, left, right
 var track = new Track('')
 var humanCar
 var paused = false
 var hud = new HUD()
+var pausedTime = 0
+var justPaused = true
 
 function setup() {
   createCanvas(1200, 800)
@@ -13,6 +18,10 @@ function setup() {
 
 function draw() {
   if (!paused) {
+    if (!justPaused) {
+      humanCar.time += millis() - pausedTime
+      justPaused = true
+    }
     background(0, 130, 0)
     track.draw()
     if (humanCar.alive) {
@@ -30,6 +39,12 @@ function draw() {
       humanCar.draw()
     } else {
       humanCar = new Car(track)
+    }
+  } else {
+    if (justPaused) {
+      console.log('justPaused')
+      pausedTime = millis()
+      justPaused = false
     }
   }
 }
