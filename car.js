@@ -1,19 +1,16 @@
 class Car {
-  constructor() {
+  constructor(track) {
     this.wid = 16
     this.hei = 26
-    this.x = 100
-    this.y = 100
-    // this.x = track.start.x
-    // this.y = track.start.y
+    this.x = track.start.x
+    this.y = track.start.y
     this.drag = 0.05
     this.speed = 0
     this.maxSpeed = 8 + this.drag
     this.acceleration = 1
-    // this.angle = track.startAngle
-    this.angle = 0
+    this.angle = track.startAngle
     this.lap = 1
-    this.time = 0
+    this.time = millis()
     this.lapTime = 0
     this.bestTime = 0
     this.col = color(255, 0, 0)
@@ -61,7 +58,7 @@ class Car {
     }
     this.x -= this.speed * Math.sin(-this.angle)
     this.y -= this.speed * Math.cos(-this.angle)
-    // if (!track.onTrack(this)) this.kill()
+    if (!track.onTrack(this)) this.kill()
   }
 
   accelerate() {
@@ -74,8 +71,8 @@ class Car {
   }
 
   brake() {
-    if (this.speed > 0.07) {
-      this.speed -= 0.07
+    if (this.speed > 0.08) {
+      this.speed -= 0.08
     } else {
       this.speed = 0
     }
@@ -100,9 +97,12 @@ class Car {
     this.onFinishLine = true
     this.preFinLine = false
     this.lap++
-    var curTime = new Date().getTime()
-    if (lap > 1) {
+    var curTime = millis()
+    if (this.lap > 1) {
       this.lapTime = curTime - this.time
+    }
+    if (this.lapTime < this.bestTime || this.bestTime == 0) {
+      this.bestTime = this.lapTime
     }
     this.time = curTime
     this.cp = []
