@@ -102,7 +102,7 @@ class Car {
       this.lapTime = curTime - this.time
     }
     if (this.lapTime < this.bestTime || this.bestTime == 0) {
-      this.bestTime = this.lapTime
+      this.bestTime = this.lapTime // save as cookie
     }
     this.time = curTime
     this.cp = []
