@@ -14,8 +14,8 @@ class HUD {
 
   draw1(lap, time, prevTime, bestTime) {
     // draw method for human player
-    prevTime = Math.round(prevTime / 1000)
-    bestTime = Math.round(bestTime / 1000)
+    prevTime = Math.round(prevTime) / 1000
+    bestTime = Math.round(bestTime) / 1000
     fill(0)
     strokeWeight(0)
     textSize(32)
